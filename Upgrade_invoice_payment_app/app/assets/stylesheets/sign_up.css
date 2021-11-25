@@ -1,0 +1,26 @@
+.login_body{background-color:#D3D3D3;}
+.log_in_statement{text-align:center;color:#323a45;}
+.log_in_and_sign_up{position: fixed;top: 40%;left: 50%; transform: translate(-50%, -50%);background-color:white;
+padding:20px;width:21%;}
+#user_email{padding-bottom:10px;border-style:none;border-bottom: 1px;border-style:solid;border-color:lightgrey;
+border-top:none;border-left:none;border-right:none;width:100%;}
+#user_password{padding-bottom:10px;border-style:none;border-bottom: 1px;border-style:solid;border-color:lightgrey;
+border-top:none;border-left:none;border-right:none;width:100%;}
+#log_in_remember_section{padding-top:10px;}
+#log_in_remember_me{font-size:13px;font-weight:bold;color:#252b33;}
+.log_in_action{text-align:center;padding-top:10px;}
+#log_in_button{width:100%;background-color:#323a45;color:white;padding:10px;border-radius: 5px;
+border-style: solid;cursor:pointer;}
+.log_in_form_sign_up_section{float:left;color:grey;margin-top:10px;margin-left:5px;font-size:11px;width:39%;}
+.log_in_form_forgot_password_section{float:left;color:grey;margin-top:10px;margin-left:5px;font-size:11px;}
+.form_field_class{padding-bottom:10px;border-style:none;border-bottom: 1px;border-style:solid;border-color:lightgrey;
+border-top:none;border-left:none;border-right:none;}
+#sign_in_button{width:100%;background-color:#323a45;color:white;padding:10px;border-radius: 5px;
+border-style: solid;margin-top:20px;}
+#reset_password_button{width:100%;background-color:#323a45;color:white;padding:10px;border-radius: 5px;
+border-style: solid;margin-top:20px;font-size:13px;}
+.forgot_log_password{font-size:19px}
+.error_notice_messeges{width:100%;font-size:13px;background-color:white;font-color:black;
+font-family: 'Lato', sans-serif;padding:1px;padding-left:1px;z-index:1;height:52px;}
+.notice_close_button{float:right;font-size:10px;color:#323a45;padding-right:10px;position:relative;top:5px;cursor:pointer;}
+

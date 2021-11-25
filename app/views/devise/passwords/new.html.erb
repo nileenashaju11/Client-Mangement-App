@@ -1,0 +1,30 @@
+<html>
+ <head><head>
+<body class="login_body" >
+
+<div class="log_in_and_sign_up">
+
+<h2 class="log_in_statement forgot_log_password"> Forgot your password? </h2>
+
+<%= form_for(resource, as: resource_name, url: user_session_path, html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%#= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "Email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions", :id => "reset_password_button" %>
+  </div>
+<% end %>
+
+<div class="log_in_form_sign_up_section">
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Log in", new_session_path(resource_name) %><br />
+<% end %>
+</div>
+
+<%#= render "devise/shared/links" %>
+</body>
+</html>

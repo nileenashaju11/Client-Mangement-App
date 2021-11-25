@@ -1,0 +1,302 @@
+
+<html>
+<title></title>
+<body class="home_page_body" style="background-color:lightgrey;">
+<div class="home_main_div_section">
+ <div class="home_main_links_section">
+<div class="row headers_section">
+<div class=" col-md-4 header_first" style="font-weight:bold;font-size:30px;top:5px;font-family:Open Sans, Arial, Helvetica, sans-serif;">Invoice Payment</div>
+<div class=" col-md-4 header_middle" style="">
+    <div class="row" style="position:relative;top:10px;">
+          <div class="col-md-3 home_link" style="cursor:pointer;">Home</div>
+          <div class="col-md-3 projects_link" style="cursor:pointer;" >Projects</div>
+          <div class="col-md-3 invoice_link" style="cursor:pointer;" >Invoices</div>
+          <div class="Service_providers" style="cursor:pointer;" >Service Providers</div>    
+   </div>
+</div>
+<div class="col-md-4 header_last" style="">
+    <div class="row">
+       <div class="col-md-3"></div>
+       <div class="col-md-3"></div>
+       <div class="col-md-2"></div>
+       <div class="col-md-2">
+          <%= link_to  user_profile_way_url do%>
+              <span class="glyphicon glyphicon-user gi-5x " title="User Profile" style="color:white;font-size:34px;position:relative;top:6px;cursor:pointer;">
+              </span>
+           <%end%>
+       </div>
+        <div class="col-md-2">
+          <%= link_to destroy_user_session_path, :method => :delete  do%>
+            <span class="glyphicon glyphicon-off gi-5x _home_sign_out" title="Sign Out" style="color:white;font-size:34px;position:relative;top:8px;cursor:pointer;">
+            </span>
+          <% end %>
+        </div>
+   </div>
+ </div>
+</div>
+ 
+  <div class="row home_charts_section" style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;">
+     <div class="col-md-4 chart_section" style="width:30%;">
+      <label>Active Projects</label>
+      <div id="chart-container1" style="width: 150px; height: 150px;"></div>
+     </div>
+     
+     <div class="col-md-4 chart_section" style="width:30%;">
+      <label>Inactive  Projects</label>
+      <div id="chart-container2" style="width: 150px; height: 150px;">
+      	
+      </div>
+     </div>
+     
+     <div class="col-md-4 chart_section" style="width:30%;">
+      <label>Granularity Percentage</label>
+      <div id="chart-container3" style="width: 250px; height: 150px;"></div>
+     </div>
+   </div>
+   
+   <div class=" row user_teams " style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;">
+      <div id="monthly_chart" style="width:49%;height:50%;border:1px solid lightgrey;float:left;">
+       
+      </div>
+      <div id="monthly_chart_dotted" style="width:49%;height:50%;border:1px solid lightgrey;float:left;margin-left:5px;">
+       
+      </div>
+   </div>
+   <div class=" row user_teams " style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;text-align:center;color:grey;font-weight:bold;text-shadow: 7px 6px 8px grey;">
+      Subscribed Projects
+   </div>
+   <%5.times do |i|%>
+    <div class=" row user_teams " style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;">
+      Subscribed Project <%=i%></br>
+      <label>Project Detailes</label>
+      <div class="row"> 
+        <div class="project_edit"   style="float:left;margin-left:15px;cursor:pointer;"><i class="glyphicon glyphicon-pencil"></i></div>	
+      	<div class="project_view"   style="float:left;margin-left:10px;cursor:pointer;"><i class="glyphicon glyphicon-search"></i></i></div>
+      	<div class="project_delete" style="float:left;margin-left:10px;cursor:pointer;"><i class="glyphicon glyphicon-trash"></i></div>
+      </div>
+   </div>
+   <%end%>
+   
+   <div class="row" style="width:100%;margin-left:0px;margin-right:0px;">
+          <br/>
+   </div>
+</div>
+  </body>
+  <script>
+  
+
+Highcharts.chart('monthly_chart', {
+
+    chart: {
+        height: (9 / 16 * 100) + '%' // 16:9 ratio
+    },
+
+    title: {
+        text: 'Monthly Project Status'
+    },
+
+    subtitle: {
+        text: ''
+    },
+
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+
+    series: [{
+        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+        type: 'column'
+    }]
+
+});
+
+$(function () {
+    $('#monthly_chart_dotted').highcharts({
+       chart: {
+        height: (9 / 16 * 100) + '%' // 16:9 ratio
+    },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        title: {
+            text: 'Monthly Project Dotted Chart'  
+        },
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]        
+        }]
+    });
+});
+    $(function() {
+        // Create the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'chart-container1',
+                type: 'pie'
+            },
+            
+            plotOptions: {
+                pie: {
+                    shadow: true
+                }
+            },
+            plotOptions: {
+                    solidgauge: {
+                        borderColor: '#009CE8',
+                        borderWidth: 40,
+                        radius: 90,
+                        innerRadius: '90%',
+                        dataLabels: {
+                            y: 5,
+                            borderWidth: 0,
+                            format: '{y}%',
+                            useHTML: true
+                        }
+                    }
+                },
+                title: {
+                     text: '60',
+                     align: 'center',
+                     verticalAlign: 'middle',
+                     color: 'black'
+                    },
+                pane: {
+                    size: '100%',
+                    center: ['50%', '60%'],
+                    startAngle: -130,
+                    endAngle: 130,
+                    background: {
+                    borderWidth: 20,
+                    backgroundColor: '#DBDBDB',
+                    shape: 'arc',
+                    borderColor: '#DBDBDB',
+                        outerRadius: '90%',
+                        innerRadius: '90%'
+                    }
+                },
+            colors: [
+                '#00ff00'
+            ],
+            series: [{
+                name: 'Active Projects',
+                data: [["Total",60]],
+                size: '100%',
+                y:60,
+                innerSize: '85%',
+                format: '{y}%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                }
+            }],
+            
+        });
+    });
+    
+    $(function() {
+        // Create the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'chart-container2',
+                type: 'pie'
+            },
+            title: {
+                text: ''
+            },
+            plotOptions: {
+                pie: {
+                    shadow: true
+                }
+            },
+            plotOptions: {
+                    solidgauge: {
+                        borderColor: '#009CE8',
+                        borderWidth: 40,
+                        radius: 90,
+                        innerRadius: '90%',
+                        dataLabels: {
+                            y: 5,
+                            borderWidth: 0,
+                            useHTML: true
+                        }
+                    }
+                },
+                 title: {
+                     text: '20',
+                     align: 'center',
+                     verticalAlign: 'middle',
+                     color: 'black'
+                    },
+                pane: {
+                    size: '100%',
+                    center: ['50%', '60%'],
+                    startAngle: -130,
+                    endAngle: 130,
+                    background: {
+                    borderWidth: 20,
+                    backgroundColor: '#DBDBDB',
+                    shape: 'arc',
+                    borderColor: '#DBDBDB',
+                        outerRadius: '90%',
+                        innerRadius: '90%'
+                    }
+                },
+            colors: [
+                'red'
+            ],
+            series: [{
+                name: 'Inactive projects',
+                data: [["Total",20]],
+                size: '100%',
+                innerSize: '85%',
+                showInLegend:false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+        });
+    });
+    
+    $(function() {
+  $('#chart-container3').highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+    },
+    title: {
+      text: ''
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <br>{point.percentage:.1f} %<br>total: {point.total}'
+    },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>total: {point.total}',
+        }
+      }
+    },
+    series: [{
+      colorByPoint: true,
+      data: [{
+        name: 'Monthly',
+        y: 15
+      }, {
+        name: 'Weekly',
+        y: 30
+      },
+      {
+      	name: 'Quaterly',
+        y: 30
+      }]
+    }]
+  });
+});
+
+  </script>
+</html>
+<%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+
